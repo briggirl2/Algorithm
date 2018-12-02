@@ -18,3 +18,58 @@ int main(){
     return 0;
 }
 ```
+
+**B. Farm**<br>
+
+```cpp
+#include <iostream>
+using namespace std;
+int main(){
+    int a,b,n,w,ans,k=0;
+    cin>>a>>b>>n>>w;
+    for(int i=1;i<n&&k<2;i++){
+        if(a*i+b*(n-i)==w){
+            ans=i;
+            k++;
+        }
+    }
+    if(k==1)
+        cout<<ans<<" "<<n-ans<<'\n';
+    else
+        cout<<"-1\n";
+    return 0;
+}
+```
+
+**G. Passport Control**<br>
+
+```cpp
+#include <iostream>
+#include <cstring>
+using namespace std;
+int main(){
+    int n,k;
+    cin>>n>>k;
+    int *out=new int[n];
+    for(int i=0;i<n;i++)
+        cin>>out[i];
+    int *q=new int[k];
+    bool ans=true;
+    memset(q,0,sizeof(int)*k);
+    for(int i=0;i<n;i++){
+        for(int j=0;j<k;j++){
+            if(out[i]>q[j]){
+                q[j]=out[i];
+                break;
+            }
+            if(j==k-1){
+                ans=false;
+                cout<<"NO\n";
+                return 0;
+            }
+        }
+    }
+    cout<<"YES\n";
+    return 0;
+}
+```
