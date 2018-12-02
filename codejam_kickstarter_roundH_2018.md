@@ -9,7 +9,6 @@ https://codejam.withgoogle.com/codejam/contest/3324486/dashboard#s=p0&a=0<br>
 #include <vector>
 #include <cmath>
 using namespace std;
-long long math_pow(long long a,long long b);
 int main(){
     int T;
     cin>>T;
@@ -23,7 +22,8 @@ int main(){
             cin>>s;
             prefixes.push_back(s);
             prefixLen=prefixes.size();
-            for(int j=prefixLen-2;j>=0;j--){
+            // forbidden prefix 중에 겹치는 것 있는지 확인하고 제외시키기
+            for(int j=prefixLen-2;j>=0;j--){ 
                 int smallLen=min(prefixes[prefixLen-1].length(),prefixes[j].length());
                 bool check=true;
                 for(int k=0;k<smallLen;k++){
@@ -43,6 +43,7 @@ int main(){
                 }
             }
         }
+        //총 가능한 버튼조합은 2^n, 이중에서 forbidden prefix 포함하는 것 제외시키기
         long long ans=pow((long long)2,n);
         for(int i=0;i<prefixLen;i++){
             long long strlen=prefixes[i].length();
@@ -77,8 +78,8 @@ int main(){
             sum[i+1]=sum[i]+(c-'0');
         }
         int ans=0;
-        int k=ceil(n/2);
-        for(int i=0;i<=n-k;i++){
+        int k=ceil(n/2); //색칠할 수 있는 section의 수
+        for(int i=0;i<=n-k;i++){ //연속된 구간합과 ans 비교해서 큰 것이 ans.
             ans=max(ans,sum[i+k]-sum[i]);
         }
         cout<<"Case #"<<tc<<": "<<ans <<'\n';
