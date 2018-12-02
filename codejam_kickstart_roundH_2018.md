@@ -1,4 +1,4 @@
-## ACM ICPC 2018 _ Nationwide Internet Competition
+## Code jam Kickstart Round H 2018
 https://codejam.withgoogle.com/codejam/contest/3324486/dashboard#s=p0&a=0<br>
 제출방법: cmd창에서 "a < A-large.in > aout.txt" 입력<br><hr><br>
 **A. Big Buttons**<br>
