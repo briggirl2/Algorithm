@@ -1,8 +1,10 @@
-## BOJ (Baekjoon Online Judge)
-<https://www.acmicpc.net>
-<br><br>
+# BOJ (Baekjoon Online Judge) 문제 풀이
+백준 홈페이지: <https://www.acmicpc.net>
 
-### 탐색과 정렬
+## 폴더 목록
+
 ### 기초 자료구조
 ### Backtracking
+### DFS와 BFS
+### DP
 ### Math
