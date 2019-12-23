@@ -58,3 +58,8 @@ int pop() {
 	}
 	return result;
 ```
+
+
+<br><br><br>
+**참고**<br>
+https://twpower.github.io/137-heap-implementation-in-cpp
