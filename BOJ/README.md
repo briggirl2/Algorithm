@@ -8,3 +8,5 @@
 ### DFS와 BFS
 ### DP
 ### Math
+### Heap
+### Greedy
