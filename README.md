@@ -1,4 +1,3 @@
-## TIL
-Today I Learned
+## Algorithm
 
-: ) 1 commit / 1 day
+Algorithm Note
