@@ -1,4 +1,4 @@
-## 1
+## 1. 크레인 인형뽑기 게임
 ```cpp
 #include <stack>
 #include <string>
@@ -28,8 +28,11 @@ int solution(vector<vector<int>> board, vector<int> moves) {
         s[m].pop();
     }
     return answer;
-}```
-## 2
+}
+```
+<br>
+
+## 2. 튜플
 ```cpp
 #include <stack>
 #include <string>
@@ -78,7 +81,9 @@ vector<int> solution(string s) {
     return answer;
 }
 ```
-## 3
+<br>
+
+## 3. 불량 사용자
 ```cpp
 #include <algorithm>
 #include <string>
@@ -149,7 +154,9 @@ int solution(vector<string> user_id, vector<string> banned_id) {
     return answer;
 }
 ```
-## 4
+<br>
+
+## 4. 호텔 방 배정
 ```cpp
 #include <string>
 #include <unordered_map>
