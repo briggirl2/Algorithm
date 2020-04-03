@@ -3,17 +3,7 @@
 #include <stack>
 #include <string>
 #include <vector>
-
-#include <iostream>
 using namespace std;
-
-int solution(vector<vector<int>> board, vector<int> moves);
-int main() {
-    vector<vector<int>> board = {{0, 0, 0, 0, 0}, {0, 0, 1, 0, 3}, {0, 2, 5, 0, 1}, {4, 2, 4, 4, 2}, {3, 5, 1, 3, 1}};
-    vector<int> moves = {1, 5, 3, 5, 1, 2, 1, 4};
-    cout << solution(board, moves) << '\n';
-    return 0;
-}
 
 int solution(vector<vector<int>> board, vector<int> moves) {
     int answer = 0;
@@ -38,8 +28,7 @@ int solution(vector<vector<int>> board, vector<int> moves) {
         s[m].pop();
     }
     return answer;
-}
-```
+}```
 ## 2
 ```cpp
 #include <stack>
@@ -162,20 +151,20 @@ int solution(vector<string> user_id, vector<string> banned_id) {
 ```
 ## 4
 ```cpp
-#include <map>
 #include <string>
+#include <unordered_map>
 #include <vector>
 
 using namespace std;
 
-map<long long, long long> m;
+unordered_map<long long, long long> m;
 
 long long find(long long x) {
-    if (m.find(m[x]) == m.end()) {
+    if (m.find(x) == m.end()) {
+        m[x] = x + 1;
         return m[x];
     } else {
-        m[x] = find(m[x]);
-        return m[x];
+        return m[x] = find(m[x]);
     }
 }
 
@@ -183,20 +172,11 @@ vector<long long> solution(long long k, vector<long long> room_number) {
     vector<long long> answer;
 
     for (int i = 0; i < room_number.size(); i++) {
-        int now = room_number[i];
+        long long now = room_number[i];
 
-        if (m.find(now) == m.end()) {
-            answer.push_back(now);
-            m.insert({now, now + 1});
-        }
-
-        else {
-            long long a = find(now);
-            answer.push_back(a);
-            m.insert({a, a + 1});
-        }
+        long long a = find(now);
+        answer.push_back(a - 1);
     }
 
     return answer;
-}
-```
+}```
