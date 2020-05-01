@@ -55,19 +55,19 @@ int main() {
             int nby = by;
             int inc_r = 0;
             int inc_b = 0;
-            while (map[nrx + dx[i]][nry + dy[i]] != '#' && map[nrx][nry] != '0') {
+            while (map[nrx + dx[i]][nry + dy[i]] != '#' && map[nrx][nry] != 'O') {
                 nrx += dx[i];
                 nry += dy[i];
                 inc_r++;
             }
-            while (map[nbx + dx[i]][nby + dy[i]] != '#' && map[nbx][nby] != '0') {
+            while (map[nbx + dx[i]][nby + dy[i]] != '#' && map[nbx][nby] != 'O') {
                 nbx += dx[i];
                 nby += dy[i];
                 inc_b++;
             }
-            if (map[nbx][nby] == '0') continue;
-            if (map[nrx][nry] == '0') {
-                cout << cnt << "\n";
+            if (map[nbx][nby] == 'O') continue;
+            if (map[nrx][nry] == 'O') {
+                cout << cnt + 1 << "\n";
                 return 0;
             }
             if (nrx == nbx && nry == nby) {
