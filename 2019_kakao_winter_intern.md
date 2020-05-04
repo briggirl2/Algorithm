@@ -1,4 +1,5 @@
 ## 1. 크레인 인형뽑기 게임
+**c++**
 ```cpp
 #include <stack>
 #include <string>
@@ -26,6 +27,7 @@ int solution(vector<vector<int>> board, vector<int> moves) {
     return answer;
 }
 ```
+**python3**
 ```py
 def solution(board, moves):
     answer = 0
@@ -46,8 +48,8 @@ def solution(board, moves):
 <br>
 
 ## 2. 튜플
+**c++**
 ```cpp
-#include <stack>
 #include <string>
 #include <vector>
 
@@ -93,6 +95,17 @@ vector<int> solution(string s) {
     }
     return answer;
 }
+```
+**python3**
+```py
+import re
+from collections import Counter
+def solution(s):
+
+    s = Counter(re.findall("\d+", s))
+    return list(
+        map(int, [k for k, v in sorted(s.items(), key=lambda x: x[1], reverse=True)])
+    )
 ```
 <br>
 
