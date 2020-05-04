@@ -110,19 +110,17 @@ def solution(s):
 <br>
 
 ## 3. 불량 사용자
+**c++**
 ```cpp
-#include <algorithm>
+#include <set>
 #include <string>
 #include <vector>
-
-#include <iostream>
-
 using namespace std;
 
 int user_cnt, banned_id_cnt;
 bool used[10];
-vector<vector<int>> v;
 int answer = 0;
+set<vector<int>> s;
 
 void dfs(int n, vector<string> user_id, vector<string> banned_id) {
     if (n == banned_id_cnt) {
@@ -132,23 +130,9 @@ void dfs(int n, vector<string> user_id, vector<string> banned_id) {
                 temp.push_back(i);
             }
         }
-        bool check = false;
-        for (int i = 0; i < v.size(); i++) {
-            bool check2 = true;
-            for (int j = 0; j < v[i].size(); j++) {
-                if (temp[j] != v[i][j]) {
-                    check2 = false;
-                    break;
-                }
-            }
-            if (check2 == true) {
-                check = true;
-                break;
-            }
-        }
-        if (check == false) {
-            v.push_back(temp);
-            answer += 1;
+        if (s.find(temp) == s.end()) {
+            s.insert(temp);
+            answer++;
         }
         return;
     }
@@ -174,9 +158,7 @@ void dfs(int n, vector<string> user_id, vector<string> banned_id) {
 int solution(vector<string> user_id, vector<string> banned_id) {
     user_cnt = user_id.size();
     banned_id_cnt = banned_id.size();
-
     dfs(0, user_id, banned_id);
-
     return answer;
 }
 ```
