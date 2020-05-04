@@ -7,28 +7,41 @@ using namespace std;
 
 int solution(vector<vector<int>> board, vector<int> moves) {
     int answer = 0;
-    int n = board[0].size();
-    stack<int> s[n];
-    stack<int> basket;
-    for (int i = 0; i < n; i++) {
-        for (int j = n - 1; j >= 0; j--) {
-            if (board[j][i] == 0) continue;
-            s[i].push(board[j][i]);
-        }
-    }
+    stack<int> s;
     for (int i = 0; i < moves.size(); i++) {
         int m = moves[i] - 1;
-        if (s[m].empty()) continue;
-        if (basket.empty() || basket.top() != s[m].top()) {
-            basket.push(s[m].top());
-        } else {
-            answer += 2;
-            basket.pop();
+        for (int j = 0; j < board.size(); j++) {
+            if (board[j][m] != 0) {
+                if (s.empty() || s.top() != board[j][m]) {
+                    s.push(board[j][m]);
+                } else {
+                    s.pop();
+                    answer += 2;
+                }
+                board[j][m] = 0;
+                break;
+            }
         }
-        s[m].pop();
     }
     return answer;
 }
+```
+```py
+def solution(board, moves):
+    answer = 0
+    s = []
+    for i in moves:
+        for j in range(len(board)):
+            if board[j][i - 1] != 0:
+                if len(s) == 0 or s[-1] != board[j][i - 1]:
+                    s.append(board[j][i - 1])
+                else:
+                    s.pop()
+                    answer += 2
+                board[j][i - 1] = 0
+                break
+    return answer
+
 ```
 <br>
 
