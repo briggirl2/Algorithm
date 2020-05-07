@@ -254,3 +254,60 @@ def solution(k, room_number):
     return answer
 ```
 <br>
+
+## 5. 징검다리 건너기
+**c++ : multiset(segment tree)**
+```cpp
+#include <string>
+#include <vector>
+#include <set>
+#include <algorithm>
+
+using namespace std;
+
+multiset <int> s;
+
+int solution(vector<int> stones, int k) {
+    int ans = 200000001;
+    for (int i = 0; i < k - 1; i++) 
+        s.insert(stones[i]);
+    for (int i = k-1; i<stones.size(); i++) {
+        s.insert(stones[i]);
+        auto it = s.end();
+        it--;
+        ans = min(ans, *it);
+        s.erase(s.find(stones[i-(k-1)]));
+    }
+    return ans;
+}
+```
+
+**c++ : binary search**
+```cpp
+#include <string>
+#include <vector>
+
+using namespace std;
+
+int solution(vector<int> stones, int k) {
+    int left = 1;
+    int right = 200000001;
+    while (left <= right) {
+        int mid = (left + right) / 2;
+        int now = 0;
+        bool possible = true;
+        for (int i = 0; i < stones.size(); i++) {
+            now = (stones[i] - mid <= 0)? now+1: 0;
+            if (now >= k) {
+                possible = false;
+                break;
+            }
+        }
+        if (possible)
+            left = mid + 1;
+        else
+            right = mid -1;
+    }
+    return left;
+}
+```
