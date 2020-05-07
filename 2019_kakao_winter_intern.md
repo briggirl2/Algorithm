@@ -205,6 +205,7 @@ def solution(user_id, banned_id):
 <br>
 
 ## 4. 호텔 방 배정
+**c++**
 ```cpp
 #include <string>
 #include <unordered_map>
@@ -234,4 +235,22 @@ vector<long long> solution(long long k, vector<long long> room_number) {
     }
 
     return answer;
-}```
+}
+```
+**python3**
+```py
+def solution(k, room_number):
+    answer = []
+    room_dic = {}
+    for i in room_number:
+        tmp = i
+        update = [tmp]
+        while tmp in room_dic:
+            tmp = room_dic[tmp]
+            update.append(tmp)
+        answer.append(tmp)
+        for j in update:
+            room_dic[j] = tmp + 1
+    return answer
+```
+<br>
