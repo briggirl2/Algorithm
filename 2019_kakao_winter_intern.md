@@ -162,6 +162,46 @@ int solution(vector<string> user_id, vector<string> banned_id) {
     return answer;
 }
 ```
+**python3**
+```py
+from collections import defaultdict
+
+answer = []
+used = defaultdict(int)
+
+
+def dfs(n, user_id, banned_id):
+    global answer
+    global used
+    if n == len(banned_id):
+        tmp = []
+        for i in range(len(user_id)):
+            if used[user_id[i]] == 1:
+                tmp.append(user_id[i])
+        if tmp not in answer:
+            answer.append(tmp)
+        return
+
+    for i in user_id:
+        if used[i] == 1 or len(banned_id[n]) != len(i):
+            continue
+        possible = True
+        for idx, k in enumerate(banned_id[n]):
+            if k != "*" and k != i[idx]:
+                possible = False
+                break
+        if possible:
+            used[i] = 1
+            dfs(n + 1, user_id, banned_id)
+            used[i] = 0
+
+
+def solution(user_id, banned_id):
+    global answer
+    global used
+    dfs(0, user_id, banned_id)
+    return len(answer)
+```
 <br>
 
 ## 4. 호텔 방 배정
