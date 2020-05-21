@@ -1,6 +1,5 @@
 #include <iostream>
 using namespace std;
-
 int map[13][13];
 int top[13][13];
 struct A {
